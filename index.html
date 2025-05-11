@@ -1,118 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background: #f4f4f4;
-            color: #333;
-        }
-        nav {
-            background: #007bff;
-            padding: 15px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        .hero {
-            background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .btn {
-            display: inline-block;
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        footer {
-            background: #007bff;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 50px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MySite - Static Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2d4b01957.js" crossorigin="anonymous"></script>
+  <style>
+    .navbar-brand {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .hero-section {
+      background: linear-gradient(to right, #0062E6, #33AEFF);
+    }
+    .card:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease;
+    }
+    section {
+      scroll-margin-top: 70px;
+    }
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="hero">
-        🚀 Welcome to My Awesome Website!
-    </div>
-
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
     <div class="container">
-        <div class="section" id="about">
-            <h2>About Us</h2>
-            <p>We are a team of passionate developers creating amazing web experiences. Our goal is to deliver high-quality websites with modern designs.</p>
-        </div>
-
-        <div class="section" id="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>🌐 Web Development</li>
-                <li>📱 Mobile App Development</li>
-                <li>⚙️ Cloud Solutions</li>
-                <li>🔒 Cybersecurity</li>
-            </ul>
-        </div>
-
-        <div class="section" id="contact">
-            <h2>Contact Us</h2>
-            <p>Have a project in mind? Let's talk!</p>
-            <a href="mailto:contact@mywebsite.com" class="btn">Get in Touch</a>
-        </div>
+      <a class="navbar-brand" href="#">MySite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <footer>
-        © 2025 My Awesome Website | Powered by Jenkins 🚀
-    </footer>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Welcome to MySite</h1>
+      <p class="lead">Clean. Responsive. Simple static page using Bootstrap 5</p>
+      <a href="#services" class="btn btn-outline-light mt-3 px-4">Explore Services</a>
+    </div>
+  </section>
 
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container text-center">
+      <h2 class="section-title">About <i class="fas fa-user-circle"></i></h2>
+      <p class="fs-5">We are dedicated to providing elegant and efficient digital solutions. Our goal is to simplify your web presence with well-crafted designs and scalable functionality.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="bg-light py-5">
+    <div class="container text-center">
+      <h2 class="section-title">Services <i class="fas fa-cogs"></i></h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="fas fa-laptop-code fa-2x mb-3 text-primary"></i>
+              <h5 class="card-title">Web Development</h5>
+              <p class="card-text">Modern, responsive websites that deliver a great user experience on all devices.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="fas fa-mobile-alt fa-2x mb-3 text-primary"></i>
+              <h5 class="card-title">Mobile Friendly</h5>
+              <p class="card-text">Designs that look great and work seamlessly on tablets and phones.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="fas fa-cloud fa-2x mb-3 text-primary"></i>
+              <h5 class="card-title">Cloud Integration</h5>
+              <p class="card-text">Effortless integration with cloud services for scalability and reliability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container text-center">
+      <h2 class="section-title">Contact <i class="fas fa-envelope"></i></h2>
+      <p class="mb-1">We’d love to hear from you!</p>
+      <p>Email us at <a href="mailto:info@example.com" class="text-decoration-none">info@example.com</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 MySite. All rights reserved.</p>
+      <div>
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
