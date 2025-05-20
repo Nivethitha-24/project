@@ -1,37 +1,24 @@
 pipeline {
     agent any
 
-    environment {
-        DEPLOY_DIR = "/var/www/html"
-    }
-
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'your-credentials-id', url: 'https://github.com/Nivethitha-24/project.git'
+                git branch: 'main', url: 'git@github.com:yourusername/your-static-site.git'
             }
         }
 
-        stage('Deploy to Server') {
+        stage('Deploy') {
             steps {
-                sh '''
-                echo "Starting Deployment..."
-
-                # Ensure Jenkins has permission to modify /var/www/html
-                echo "jenkins-password" | sudo -S chown -R jenkins:jenkins $DEPLOY_DIR
-                echo "jenkins-password" | sudo -S chmod -R 755 $DEPLOY_DIR
-
-                # Remove old files
-                echo "jenkins-password" | sudo -S rm -rf $DEPLOY_DIR/*
-
-                # Copy new files
-                echo "jenkins-password" | sudo -S cp -r * $DEPLOY_DIR/
-
-                # Restart Apache server
-                echo "jenkins-password" | sudo -S systemctl restart apache2
-
-                echo "Deployment successful!"
-                '''
+                // If deploying to local Jenkins workspace (for testing)
+                // Just archive the files, or copy to web server folder
+                
+                // If deploying to remote server via SSH:
+                sshagent(['your-ssh-credential-id']) {
+                    sh '''
+                       rsync -avz --delete ./ user@yourserver:/var/www/html/
+                    '''
+                }
             }
         }
     }
