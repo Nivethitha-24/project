@@ -4,7 +4,8 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
-        DEPLOY_SERVER = 'nivethitha@172.25.149.228' // ✅ Updated to real IP and username
+        DEPLOY_SERVER = 'nivethitha@172.25.149.228'
+        SSH_KEY_PATH = '~/.ssh/id_rsa'  // Explicitly specifying SSH key
     }
 
     stages {
@@ -18,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                // Add actual build commands here
+                // Add actual build commands here (e.g., Maven, Gradle, etc.)
             }
         }
 
@@ -26,12 +27,14 @@ pipeline {
             steps {
                 sshagent(['jenkins']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} << 'EOF'
-                        echo "Starting deployment..."
+                        echo "Starting deployment process..."
+                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} << 'EOF'
+                        echo "Connected to remote server!"
                         cd /path/to/deploy
                         git pull origin main
                         echo "Deployment Successful!"
                         EOF
+                        echo "Deployment process completed."
                     """
                 }
             }
@@ -40,10 +43,10 @@ pipeline {
 
     post {
         success {
-            echo "Pipeline completed successfully!"
+            echo "✅ Pipeline completed successfully!"
         }
         failure {
-            echo "Pipeline failed!"
+            echo "❌ Pipeline failed!"
         }
     }
 }
