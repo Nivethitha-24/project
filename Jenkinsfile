@@ -28,7 +28,7 @@ pipeline {
                 sshagent(['jenkins']) {
                     sh '''
                         echo "Starting deployment process..."
-                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "echo Connected to remote server && cd /path/to/deploy && git pull origin main && echo Deployment Successful!"
+                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "echo Connected to remote server && cd /home/nivethitha/project && git pull origin main && echo Deployment Successful!"
                         echo "Deployment process completed."
                     '''
                 }
