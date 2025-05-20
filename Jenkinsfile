@@ -25,7 +25,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['deployment-server-credentials']) {
+                sshagent(['jenkins']) {
                     sh '''
                         ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no $DEPLOY_SERVER <<EOF
                         echo "Starting deployment..."
