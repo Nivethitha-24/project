@@ -4,7 +4,7 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
-        DEPLOY_SERVER = 'user@192.168.1.100' // ✅ Replace with real IP or hostname
+        DEPLOY_SERVER = 'nivethitha@172.25.149.228' // ✅ Updated to real IP and username
     }
 
     stages {
