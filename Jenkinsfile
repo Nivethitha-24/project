@@ -4,8 +4,8 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
-        DEPLOY_SERVER = 'user@remote-server'
-        SSH_KEY_PATH = '~/.ssh/id_rsa'
+        DEPLOY_SERVER = 'user@remote-server'  // Replace with actual username and server IP
+        SSH_KEY_PATH = '~/.ssh/id_rsa'  // Explicitly specifying the private key
     }
 
     stages {
@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                // Add actual build commands here
+                // Add actual build commands here (e.g., Maven, Gradle, etc.)
             }
         }
 
