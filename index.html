@@ -1,3 +1,301 @@
-<html>
-  <p>hello</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cooks Inspired Restaurant</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Header */
+  header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #e94e1b;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  nav ul li {
+    margin-left: 30px;
+  }
+  nav ul li a {
+    font-weight: 600;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+  }
+  nav ul li a:hover {
+    background: #e94e1b;
+    color: white;
+    border-radius: 4px;
+  }
+
+  /* Hero */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+    height: 80vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .btn {
+    background: #e94e1b;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+  }
+  .btn:hover {
+    background: #c43812;
+  }
+
+  /* About Section */
+  section.about {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  section.about img {
+    flex: 1;
+    border-radius: 12px;
+  }
+  section.about .content {
+    flex: 1;
+  }
+  section.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #e94e1b;
+  }
+  section.about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* Menu Section */
+  section.menu {
+    background: #f9f9f9;
+    padding: 50px 20px;
+  }
+  section.menu h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #e94e1b;
+  }
+  .menu-items {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+  }
+  .menu-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .menu-item:hover {
+    transform: translateY(-8px);
+  }
+  .menu-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .menu-item-content {
+    padding: 15px;
+  }
+  .menu-item-content h3 {
+    margin-bottom: 8px;
+    color: #e94e1b;
+  }
+  .menu-item-content p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .menu-item-content .price {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #222;
+  }
+
+  /* Contact Section */
+  section.contact {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  section.contact h2 {
+    color: #e94e1b;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  section.contact form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  section.contact form input,
+  section.contact form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  section.contact form button {
+    align-self: center;
+    width: 150px;
+  }
+
+  /* Footer */
+  footer {
+    background: #222;
+    color: #bbb;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media(max-width: 768px){
+    section.about {
+      flex-direction: column;
+    }
+    section.about img, section.about .content {
+      width: 100%;
+    }
+    nav ul li {
+      margin-left: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">Cooks</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Delicious Food, Delivered Fresh</h1>
+  <p>Experience the best dishes made with love and the freshest ingredients.</p>
+  <button class="btn">Order Now</button>
+</section>
+
+<section class="about" id="about">
+  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="About us" />
+  <div class="content">
+    <h2>About Our Restaurant</h2>
+    <p>At Cooks, we believe in serving you authentic flavors with a modern twist. Our chefs bring the finest ingredients together to create dishes that satisfy your cravings and nourish your soul.</p>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <h2>Our Menu</h2>
+  <div class="menu-items">
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Grilled Chicken" />
+      <div class="menu-item-content">
+        <h3>Grilled Chicken</h3>
+        <p>Succulent grilled chicken served with fresh herbs and lemon.</p>
+        <div class="price">$15</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Salmon Salad" />
+      <div class="menu-item-content">
+        <h3>Salmon Salad</h3>
+        <p>Fresh salmon served on a bed of mixed greens with a tangy dressing.</p>
+        <div class="price">$12</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Pasta Alfredo" />
+      <div class="menu-item-content">
+        <h3>Pasta Alfredo</h3>
+        <p>Creamy Alfredo sauce with fettuccine and freshly grated Parmesan.</p>
+        <div class="price">$13</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="tel" name="phone" placeholder="Your Phone (optional)" />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 Cooks. All rights reserved. | Contact: info@cooks.com
+</footer>
+
+</body>
 </html>
