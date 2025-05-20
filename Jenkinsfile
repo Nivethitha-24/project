@@ -4,8 +4,7 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
-        DEPLOY_SERVER = 'user@remote-server'  // Replace with actual username and server IP
-        SSH_KEY_PATH = '~/.ssh/id_rsa'  // Explicitly specifying the private key
+        DEPLOY_SERVER = 'user@192.168.1.100' // ✅ Replace with real IP or hostname
     }
 
     stages {
@@ -19,21 +18,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                // Add actual build commands here (e.g., Maven, Gradle, etc.)
+                // Add actual build commands here
             }
         }
 
         stage('Deploy') {
             steps {
                 sshagent(['jenkins']) {
-                    sh '''
-                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no $DEPLOY_SERVER <<EOF
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} << 'EOF'
                         echo "Starting deployment..."
                         cd /path/to/deploy
                         git pull origin main
                         echo "Deployment Successful!"
                         EOF
-                    '''
+                    """
                 }
             }
         }
