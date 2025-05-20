@@ -5,7 +5,7 @@ pipeline {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
         DEPLOY_SERVER = 'nivethitha@172.25.149.228'
-        SSH_KEY_PATH = '~/.ssh/id_rsa'  // Explicitly specifying SSH key
+        SSH_KEY_PATH = '/var/lib/jenkins/.ssh/id_rsa'  // ✅ Ensure Jenkins uses its correct private key
     }
 
     stages {
@@ -26,16 +26,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['jenkins']) {
-                    sh """
+                    sh '''
                         echo "Starting deployment process..."
-                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} << 'EOF'
-                        echo "Connected to remote server!"
-                        cd /path/to/deploy
-                        git pull origin main
-                        echo "Deployment Successful!"
-                        EOF
+                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "echo Connected to remote server && cd /path/to/deploy && git pull origin main && echo Deployment Successful!"
                         echo "Deployment process completed."
-                    """
+                    '''
                 }
             }
         }
