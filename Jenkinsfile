@@ -30,7 +30,7 @@ pipeline {
                             git fetch origin ${BRANCH}
                             git reset --hard origin/${BRANCH}
                             git clean -fd
-
+                             nohup python3 -m http.server 8085 >/dev/null 2>&1 &
                             echo "✅ Deployment Successful!"
                         '
                     """
