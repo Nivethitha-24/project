@@ -1,3 +1,198 @@
-<html>
-  <p>hello world</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Treats Bakery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('https://images.unsplash.com/photo-1548365328-8b93c06d0225') center/cover no-repeat;
+      height: 90vh;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .testimonial {
+      background-color: #fff3cd;
+      padding: 2rem;
+      border-left: 6px solid #ffc107;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 2rem 0;
+    }
+    footer .fa-brands {
+      margin: 0 10px;
+      color: #ffc107;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    footer .fa-brands:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-warning" href="#">Sweet Treats</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero text-center">
+  <div data-aos="fade-up">
+    <h1 class="display-3 fw-bold">Deliciously Homemade</h1>
+    <p class="lead">Freshly baked with love every day</p>
+    <a href="#products" class="btn btn-warning btn-lg mt-3">Explore Our Menu</a>
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right">
+      <img src="https://images.unsplash.com/photo-1587248725037-2be6c6aebc3f" class="img-fluid rounded shadow" alt="Bakery interior" />
+    </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h2 class="mb-3">About Our Bakery</h2>
+      <p>
+        At Sweet Treats Bakery, we believe in creating moments of joy through the perfect balance of flavor and craftsmanship.
+        Our pastries, cakes, and breads are baked daily using traditional methods and locally sourced ingredients.
+      </p>
+      <p>Visit us to experience the aroma of fresh baking and the warmth of our bakery family!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Bestsellers</h2>
+    <div class="row text-center g-4">
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="product-card p-3 bg-white">
+          <img src="https://images.unsplash.com/photo-1605452297368-cbfe06c46c3f" class="img-fluid mb-3" alt="Cupcake" />
+          <h5>Chocolate Cupcake</h5>
+          <p class="text-muted">$2.50</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="product-card p-3 bg-white">
+          <img src="https://images.unsplash.com/photo-1623051802210-07e0c418bec4" class="img-fluid mb-3" alt="Strawberry Cake" />
+          <h5>Strawberry Delight</h5>
+          <p class="text-muted">$15.00</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="product-card p-3 bg-white">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" class="img-fluid mb-3" alt="Bread Loaf" />
+          <h5>Homemade Bread</h5>
+          <p class="text-muted">$4.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="container py-5">
+  <h2 class="text-center mb-4">What Our Customers Say</h2>
+  <div class="row">
+    <div class="col-md-6" data-aos="fade-up">
+      <div class="testimonial">
+        <p>"Absolutely the best cupcakes I've ever had. The staff is friendly, and the ambiance is delightful!"</p>
+        <p class="fw-bold mb-0">– Emily R.</p>
+      </div>
+    </div>
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
+      <div class="testimonial">
+        <p>"Their sourdough bread is to die for. I visit every weekend without fail!"</p>
+        <p class="fw-bold mb-0">– James P.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Get In Touch</h2>
+    <form class="row g-3" data-aos="fade-up">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Your Name" required />
+      </div>
+      <div class="col-md-6">
+        <input type="email" class="form-control" placeholder="Your Email" required />
+      </div>
+      <div class="col-12">
+        <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-warning px-5">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p>&copy; 2025 Sweet Treats Bakery. All rights reserved.</p>
+    <p>123 Main Street, Caketown, USA | (555) 123-4567</p>
+    <div class="mt-2">
+      <a href="#"><i class="fab fa-facebook fa-brands"></i></a>
+      <a href="#"><i class="fab fa-instagram fa-brands"></i></a>
+      <a href="#"><i class="fab fa-twitter fa-brands"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+</body>
 </html>
