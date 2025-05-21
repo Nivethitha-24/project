@@ -7,7 +7,7 @@ pipeline {
         DEPLOY_SERVER = 'nivethitha@172.25.149.228'
         SSH_KEY_PATH = '/var/lib/jenkins/.ssh/id_rsa'  // Jenkins private key path
         APP_DIR = '/home/nivethitha/project'
-        APP_START_COMMAND = 'pm2 start app.js --name project || pm2 restart project' // Change if needed
+        PM2_PATH = '/usr/local/bin/pm2'  // <-- Replace with `which pm2` output from remote server
     }
 
     stages {
@@ -21,24 +21,34 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                // Add your build commands here, e.g. 'npm install' if build happens locally
-                // Or leave empty if build happens on the server
+                // Add your build commands here (npm run build, mvn package, etc.)
             }
         }
 
         stage('Deploy') {
             steps {
                 sshagent(['jenkins']) {
-                    sh '''
-                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "
-                            echo 'Starting deployment on remote server...'
-                            cd ${APP_DIR} &&
-                            git pull origin ${BRANCH} &&
-                            npm install &&
-                            ${APP_START_COMMAND} &&
-                            echo '✅ Deployment Successful!'
-                        "
-                    '''
+                    sh """
+                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} '
+                            echo "Starting deployment on remote server..."
+
+                            cd ${APP_DIR} || exit 1
+
+                            # Reset local changes to avoid git conflicts
+                            git fetch origin ${BRANCH}
+                            git reset --hard origin/${BRANCH}
+
+                            # Pull latest code
+                            git clean -fd
+
+                            npm install
+
+                            # Use full path to pm2 to avoid "command not found"
+                            ${PM2_PATH} start app.js --name project || ${PM2_PATH} restart project
+
+                            echo "✅ Deployment Successful!"
+                        '
+                    """
                 }
             }
         }
