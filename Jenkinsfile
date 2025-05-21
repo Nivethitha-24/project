@@ -5,7 +5,9 @@ pipeline {
         GIT_REPO = 'https://github.com/Nivethitha-24/project.git'
         BRANCH = 'main'
         DEPLOY_SERVER = 'nivethitha@172.25.149.228'
-        SSH_KEY_PATH = '/var/lib/jenkins/.ssh/id_rsa'  // ✅ Ensure Jenkins uses its correct private key
+        SSH_KEY_PATH = '/var/lib/jenkins/.ssh/id_rsa'  // Jenkins private key path
+        APP_DIR = '/home/nivethitha/project'
+        APP_START_COMMAND = 'pm2 start app.js --name project || pm2 restart project' // Change if needed
     }
 
     stages {
@@ -19,7 +21,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                // Add actual build commands here (e.g., Maven, Gradle, etc.)
+                // Add your build commands here, e.g. 'npm install' if build happens locally
+                // Or leave empty if build happens on the server
             }
         }
 
@@ -27,9 +30,14 @@ pipeline {
             steps {
                 sshagent(['jenkins']) {
                     sh '''
-                        echo "Starting deployment process..."
-                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "echo Connected to remote server && cd /home/nivethitha/project && git pull origin main && echo Deployment Successful!"
-                        echo "Deployment process completed."
+                        ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "
+                            echo 'Starting deployment on remote server...'
+                            cd ${APP_DIR} &&
+                            git pull origin ${BRANCH} &&
+                            npm install &&
+                            ${APP_START_COMMAND} &&
+                            echo '✅ Deployment Successful!'
+                        "
                     '''
                 }
             }
